@@ -1,0 +1,60 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ms</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/cleave-phone.us.js"></script>
+    <script src="~/js/cleave.js"></script>
+    <script src="~/lib/jquery/dist/jquery-3.6.4.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body id="body-login">
+    <header class="header-style">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark-blue border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="/img/memoryspace-logo.png" height="50" /></a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <a  asp-area="" asp-controller="Home" asp-action="Index">
+                        <li class="nav-item nav-link">
+                            Home
+                        </li>
+                        </a>
+                        <a  asp-area="" asp-controller="Home" asp-action="Cloud">
+                        <li class="nav-item nav-link">
+                            Cloud
+                        </li>
+                        </a>
+                        <a asp-area="" asp-controller="Home" asp-action="ERP">
+                        <li class="nav-item nav-link">
+                            ERP
+                        </li>
+                        </a>
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="wrapper">
+            @RenderBody()
+        </main>
+    <footer class="footer">
+        <div class="container">
+            &copy; 2023 - Sentient Ventures LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

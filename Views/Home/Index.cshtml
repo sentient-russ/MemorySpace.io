@@ -1,0 +1,148 @@
+﻿
+@model ms.Controllers.ContactController
+@{
+    ViewData["Title"] = "memoryspace.io";
+}
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade " data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner active">
+        <div class="carousel-item active">
+            <img src="/img/library.png" class="d-block w-100 hero-opacity" alt="...">
+            <div class="carousel-caption">
+                <h10>We are a lot closer to this...</h10>
+                <p>A sophisticated, proven and trusted source. </p>
+            </div>
+        </div>
+        <div class="carousel-item" data-interval="1000">
+            <img src="/img/data-center.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption">
+                <h10>...than we are to this.</h10>
+                <p>We provide direct service, support and lightning fast response times.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-interval="1000">
+            <img src="/img/ominous-weather.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption">
+                <h10>In a stormy ocean full of data pirates...</h10>
+                <p>We are committed to doing what's ethically right.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-interval="1000">
+            <img src="/img/safe-harbor.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption">
+                <h10>We are a safe harbor you can trust.</h10>
+                <p>There are no sneaky terms of service being pushed here.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<section class="top-section">
+        <div class="text-center">
+            <h12 class="on-top">memoryspace.io</h12>
+            <p class="on-top h13">is the proud cloud provider for magnadigi.com.</p>
+            <p class="on-top">If you would like information about their services please visit them at <a href="https://www.magnadigi.com">magnadigi.com</a></p>
+            <img class="logo-watermark" src="/img/memoryspace-logo-head-only.png" />
+        </div>
+</section>
+<section class="flexbox-bottom-row">
+    <div class="container-lower">        
+        <a  asp-area="" asp-controller="Home" asp-action="Cloud">
+            <div class="showcase-box1">
+                <center>
+                    <img class="showcase-image" src="/img/cloud.png" /><p><b>Prjoect - Cloud Services</b></p>
+                </center>
+                <div class="showcase-inner-box">
+                    <p class="showcase-inner-paragraph">Cloud file sharing and video conferencing.</p>
+                </div>
+            </div>
+        </a>
+        <a asp-area="" asp-controller="Home" asp-action="ERP">
+        <div class="showcase-box2">
+            <center>
+                    <img class="showcase-image" src="/img/ms.png" /><p><b>Project - Web Services</b></p>
+            </center>
+            <div class="showcase-inner-box">
+                <p class="showcase-inner-paragraph">Linux web server management for .net, php and python sites.</p>
+            </div>
+        </div>
+        </a>
+        <a href="http://www.magnadigi.com">
+        <div class="showcase-box3">
+            <center>
+                    <img class="showcase-image" src="/img/md.png" /><p><b>Development Services</b></p>
+            </center>
+            <div class="showcase-inner-box">
+                <p class="showcase-inner-paragraph">Currently specializing in ERPNext, .Net, CSS, HTML and Java</p>
+            </div>
+        </div>
+        </a>
+    </div>
+</section>
+<section class="flexbox-contact-container">
+    <div class="flexbox-container center">
+        <div class="dialog-box-container">
+            @*Start new form here.*@
+            <div class="flexbox-container" style="margin-top: 20px;">
+                <form method="post" action="/Contact" enctype="multipart/form-data">
+                    <center><img src="/icon/device-message.svg" style="height:100px;justify-content:center;" /></center>
+                    <center><p><h1>Contact</h1></p></center>
+                    <div class="form-floating mb-3">
+                        <p><div asp-validation-summary="ModelOnly" class="alert-color hidden"></div></p>
+                        <input asp-for="Name" id="Name" class="form-control" placeholder="First/Last Name"  required/>
+                        <label asp-for="Name">Name</label>
+                        <span asp-validation-for="Name" class="alert-color"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Business" class="form-control" id="Business" placeholder="Company Name" required />
+                        <label asp-for="Business"></label>
+                        <span asp-validation-for="Business" class="alert-color"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Phone" id="Phone" name="Phone" placeholder="(xxx) xxx-xxxx" type="text" class="form-control Phone" required/>
+                        <label asp-for="Phone"></label>
+                        <span asp-validation-for="Phone" class="alert-color"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Email" class="form-control" placeholder="example@somewhere.com" required/>
+                        <label asp-for="Email"></label>
+                        <span asp-validation-for="Email" class="alert-color"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="Message" class="form-control" style="height: 100px" placeholder="Message" required></textarea>
+                        <label asp-for="Message"></label>
+                        <span asp-validation-for="Message" class="alert-color"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <center><button type="submit" class="form-button">Send</button></center>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@section Scripts {
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
