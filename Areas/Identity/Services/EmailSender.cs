@@ -10,26 +10,20 @@ namespace WebPWrecover.Services;
 public class EmailSender : IEmailSender
 {
     private readonly ILogger _logger;
-
+    private string MS_Email_Pass = Environment.GetEnvironmentVariable("MS_Email_Pass");
     public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
                        ILogger<EmailSender> logger)
     {
         Options = optionsAccessor.Value;
         _logger = logger;
+
     }
-
-    public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
-
+    public AuthMessageSenderOptions Options { get; }
     public async Task SendEmailAsync(string toEmail, string subject, string message)
     {
-        if (string.IsNullOrEmpty(Options.SendGridKey))
-        {
-            throw new Exception("Null SendGridKey");
-        }
-        await Execute(Options.SendGridKey, subject, message, toEmail);
+        await Execute(subject, message, toEmail);
     }
-    //updated to smtp from sendgrid 4/24/2023
-    public async Task Execute(string apiKey, string subject, string message, string toEmail)
+    public async Task Execute(string subject, string message, string toEmail)
     {
         var email = new MimeMessage();
         email.From.Add(MailboxAddress.Parse("cs@magnadigi.com"));
@@ -41,7 +35,7 @@ public class EmailSender : IEmailSender
         };
         using var smtp = new SmtpClient();
         smtp.Connect("us2.smtp.mailhostbox.com", 587, SecureSocketOptions.StartTls);
-        smtp.Authenticate("cs@magnadigi.com", "#WrncUkPJ3");
+        smtp.Authenticate("cs@magnadigi.com", MS_Email_Pass);
         var response = smtp.Send(email);
         smtp.Disconnect(true);
         _logger.LogInformation("The message smtp send to " + toEmail + "was attempted and returned a status of: " + response);

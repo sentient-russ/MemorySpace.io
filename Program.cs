@@ -1,4 +1,3 @@
-///using magnadigi.Areas.Identity.Data;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
@@ -11,7 +10,6 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using ms.Data;
 using WebPWrecover.Services;
-///using magnadigi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
@@ -35,8 +33,26 @@ builder.WebHost.ConfigureKestrel((context, serverOptions) =>
     });
 });
 
-//pulls connection string from appsettings.json
-var connectionString = builder.Configuration.GetConnectionString("MariaDbConnectionStringRemote") ?? throw new InvalidOperationException("Connection string 'MariaDbConnectionString' not found.");
+//configure connection string from environment variables thus hidding it from production
+var environ = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var connectionString = "";
+var MS_Email_Pass = "";
+if (environ == "Production")
+{
+    //pulls connection string from environment variables
+    connectionString = Environment.GetEnvironmentVariable("MariaDbConnectionStringLocal");
+    MS_Email_Pass = Environment.GetEnvironmentVariable(MS_Email_Pass);
+}
+else
+{
+    //pulls connection string from development local version of secrets.json
+    connectionString = builder.Configuration.GetConnectionString("MariaDbConnectionStringRemote");
+    MS_Email_Pass = builder.Configuration.GetConnectionString("MS_Email_Pass");
+
+
+}
+Environment.SetEnvironmentVariable("DbConnectionString", connectionString);//this is used in services to access the string
+Environment.SetEnvironmentVariable("GC_Email_Pass", MS_Email_Pass);
 
 //adds the MySQL dbcontext
 builder.Services.AddDbContext<ms.Data.ApplicationDbContext>(options => options.UseMySql(connectionString, new MySqlServerVersion(new Version(10, 6, 11)), options => options.EnableRetryOnFailure()));

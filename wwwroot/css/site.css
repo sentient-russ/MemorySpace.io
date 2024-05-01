@@ -4,24 +4,11 @@
     font-family: 'Source Serif Pro', monospace;
     box-sizing: border-box;
 }
-
-:root {
-    --bs-body-bg: #6e83aa;
-}
-
 a {
     text-decoration: none;
-    color: #344472;
+    color: #829dce;
 }
-.Phone{
-
-}
-a:hover {
-    color: #344472;
-}
-
-a:visited {
-    color: #D9D9D9;
+.Phone {
 }
 .header-style {
     box-shadow: 0 0 10px #333;
@@ -66,7 +53,12 @@ a:visited {
 .mb-3 {
     margin-bottom: 1rem !important
 }
+iframe {
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
+}
 footer {
     border-top: 1px solid #dee2e6 !important;
     position: fixed;
@@ -75,17 +67,17 @@ footer {
     background-color: #6e83aa;
     z-index:1;
 }
+
 body {
     height:100vh;
     background: #bebebe;
-    overflow: scroll;
-
+    overflow-y: scroll;
+    
 }
 .wrapper {
     height:100vh;
     width:100%;
-    overflow-y: auto;
-    overflow-x: scroll;
+
     perspective:10px;
 }
 html {
@@ -139,8 +131,14 @@ iframe{
 
 .navbar-nav {
     background-color: transparent;
+    
 }
-
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height:10%
+}
 .bg-dark-blue {
     background-image: linear-gradient(135deg, #6e83aa, #829dce,#6e83aa 60%);
 }
