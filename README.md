@@ -1,10 +1,10 @@
-#### **Overview:**
+### Overview:
 A no frills cloud server front end that has portals for NextCloud and ERPNext Instances. MemorySpace.io provides services for MagnaDigi.com's ERPNext instance.
 
-#### **High-level technologies:**
+### High-level technologies:
 C#, .NET7, Vanilla JS, Bootstrap, MySQL, Linux
 
-#### **Demo Screens:**
+### Demo Screens:
 <p align="center">
 <img width="512" alt="ms_index" src="https://github.com/sentient-russ/MemorySpace.io/assets/108576049/48b50da7-7efc-4530-b5e0-ef19e752bd0b">
 </p>
